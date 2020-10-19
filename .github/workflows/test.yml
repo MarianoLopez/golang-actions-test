@@ -9,7 +9,7 @@ jobs:
     name: Build
     runs-on: ${{matrix.platform}}
     env:
-      GOPATH: ${{ github.workspace }}
+      #GOPATH: ${{ github.workspace }}
       GO111MODULE: on
 
     steps:
