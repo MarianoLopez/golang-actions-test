@@ -11,8 +11,8 @@ jobs:
       # Checks out a copy of your repository on the ubuntu-latest machine
       - name: Checkout code
         uses: actions/checkout@v2
-        with:
-          path: ./src/github.com/${{ github.repository }}
+        #with:
+         # path: ./src/github.com/${{ github.repository }}
       # Install golang 1.15
       - name: Set up Go
         uses: actions/setup-go@v2
@@ -22,6 +22,7 @@ jobs:
       - name: Build
         run:  |
           go env
+          pwd
           ls -la
           cat -e -t -v Makefile
           make build
