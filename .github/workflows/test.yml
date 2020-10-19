@@ -15,7 +15,9 @@ jobs:
         uses: actions/checkout@v2
       # Build code
       - name: Build
-        run:  make build
+        run:  |
+          export PATH=$PATH:$(go env GOPATH)/bin
+          make build
       # Run code
       - name: Run code
         run: make run
