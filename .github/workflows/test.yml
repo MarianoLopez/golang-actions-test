@@ -11,7 +11,7 @@ jobs:
     env:
       GOPATH: ${{ github.workspace }}
       GO111MODULE: on
-      GREETING: "my friend!"
+      WORKING_DIR: ./src/github.com/${{ github.repository }}
 
     steps:
       - name: Set up Go
@@ -21,17 +21,14 @@ jobs:
 
       - uses: actions/checkout@v2
         with:
-          path: ./src/github.com/${{ github.repository }}
+          path: ${{WORKING_DIR}}
       # Build code
       - name: Build
-        run:  |
-          echo ${{ github.workspace }}
-          cd ./src/github.com/${{ github.repository }}
-          make build
+        working-directory: ${{WORKING_DIR}}
+        run:  make build
       # Run code
       - name: Run code
-        run: |
-          cd ./src/github.com/${{ github.repository }}
-          make run
+        working-directory: ${{WORKING_DIR}}
+        run: make run
         env:
           GREETING: "from git actions"
