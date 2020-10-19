@@ -3,6 +3,7 @@ on: push
 jobs:
   golang-test-action:
     name: Build
+    runs-on: ubuntu-latest
     env:
       GOPATH: ${{ github.workspace }}
       GO111MODULE: on
