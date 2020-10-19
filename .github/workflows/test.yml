@@ -11,24 +11,25 @@ jobs:
     env:
       GOPATH: ${{ github.workspace }}
       GO111MODULE: on
-      WORKING_DIR: ./src/github.com/${{ github.repository }}
 
     steps:
+      # Install go
       - name: Set up Go
         uses: actions/setup-go@v2
         with:
           go-version: ${{matrix.go-version}}
-
-      - uses: actions/checkout@v2
+      # Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v2
         with:
-          path: ${{WORKING_DIR}}
+          path: ./src/github.com/${{ github.repository }}
       # Build code
       - name: Build
-        working-directory: ${{WORKING_DIR}}
+        working-directory: ./src/github.com/${{ github.repository }}
         run:  make build
       # Run code
       - name: Run code
-        working-directory: ${{WORKING_DIR}}
+        working-directory: ./src/github.com/${{ github.repository }}
         run: make run
         env:
           GREETING: "from git actions"
