@@ -1,8 +1,8 @@
 package main
 
 import (
-	"go-git-action/internal"
-	"go-git-action/pkg"
+	"github.com/MarianoLopez/golang-actions-test/internal"
+	"github.com/MarianoLopez/golang-actions-test/pkg"
 )
 
 func main() {
