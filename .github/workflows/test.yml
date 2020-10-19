@@ -9,7 +9,7 @@ jobs:
     name: Build
     runs-on: ${{matrix.platform}}
     env:
-      #GOPATH: ${{ github.workspace }}
+      GOPATH: ${{ github.workspace }}
       GO111MODULE: on
 
     steps:
@@ -19,10 +19,12 @@ jobs:
           go-version: ${{matrix.go-version}}
 
       - uses: actions/checkout@v2
+        with:
+          path: ./src/github.com/${{ github.repository }}
       # Build code
       - name: Build
         run:  |
-          pwd
+          cd ./src/github.com/${{ github.repository }}
           ls -la
           cat -e -t -v Makefile
           make build
