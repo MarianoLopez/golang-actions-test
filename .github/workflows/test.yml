@@ -11,6 +11,7 @@ jobs:
     env:
       GOPATH: ${{ github.workspace }}
       GO111MODULE: on
+      GREETING: "my friend!"
 
     steps:
       - name: Set up Go
@@ -29,6 +30,8 @@ jobs:
           make build
       # Run code
       - name: Run code
-        run: make run
+        run: |
+          cd ./src/github.com/${{ github.repository }}
+          make run
         env:
           GREETING: "from git actions"
