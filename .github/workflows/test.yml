@@ -22,6 +22,7 @@ jobs:
       - name: Build
         run:  |
           go env
+          pwd
           make build
       # Run code
       - name: Run code
