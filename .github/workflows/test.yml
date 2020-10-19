@@ -5,17 +5,16 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      # Install golang 1.15
-      - name: Install Go
-        uses: actions/setup-go@v2
-        with:
-          go-version: 1.15
       # Checks out a copy of your repository on the ubuntu-latest machine
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Build code
-        run: make build
+      # Install golang 1.15 & build
+      - name: Install Go & build
+        uses: cedrickring/golang-action/go1.15@1.6.0
+        with:
+          args: make build
       - name: Run code
         run: make run
         env:
-          GREETING: from git actions
+          GO111MODULE: "on"
+          GREETING: "from git actions"
