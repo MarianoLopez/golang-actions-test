@@ -22,6 +22,8 @@ jobs:
       # Build code
       - name: Build
         run:  |
+          echo "::set-env name=GREETING::there"
+          echo "::add-path::${HOME}/goroot/bin"
           go env
           make build
       # Run code
