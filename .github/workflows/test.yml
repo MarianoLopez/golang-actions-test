@@ -16,6 +16,7 @@ jobs:
       # Build code
       - name: Build
         run:  |
+          go env
           export PATH=$PATH:$(go env GOPATH)/bin
           make build
       # Run code
