@@ -22,7 +22,7 @@ jobs:
       # Build code
       - name: Build
         run:  |
-          echo ${HOME}/goroot/bin >> $GOROOT
+          echo "${HOME}/goroot/bin" >> $GOROOT
           echo "testing" >> $GREETING
           echo "on" >> $GO111MODULE
           go env
