@@ -5,14 +5,20 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
+      # Checks out a copy of your repository on the ubuntu-latest machine
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+          path: go/src/github.com/MarianoLopez/golang-actions-test
       # Install golang 1.15
       - name: Set up Go
         uses: actions/setup-go@v2
         with:
           go-version: 1.15
-      # Checks out a copy of your repository on the ubuntu-latest machine
-      - name: Checkout code
-        uses: actions/checkout@v2
+        env:
+          GOPATH: /home/runner/work/MarianoLopez/go
+          GO111MODULE: "on"
       # Build code
       - name: Build
         run:  |
