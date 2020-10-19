@@ -22,7 +22,8 @@ jobs:
       - name: Build
         run:  |
           go env
-          pwd
+          ls -la
+          cat -e -t -v Makefile
           make build
       # Run code
       - name: Run code
