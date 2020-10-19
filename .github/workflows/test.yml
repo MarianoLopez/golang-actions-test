@@ -2,26 +2,26 @@ name: golang-action-test
 on: push
 jobs:
   golang-test-action:
+    strategy:
+      matrix:
+        go-version: [1.15.x]
+        platform: [ubuntu-latest]
     name: Build
-    runs-on: ubuntu-latest
+    runs-on: ${{matrix.platform}}
     env:
       GOPATH: ${{ github.workspace }}
       GO111MODULE: on
+
     steps:
-      # Checks out a copy of your repository on the ubuntu-latest machine
-      - name: Checkout code
-        uses: actions/checkout@v2
-        #with:
-         # path: ./src/github.com/${{ github.repository }}
-      # Install golang 1.15
       - name: Set up Go
         uses: actions/setup-go@v2
         with:
-          go-version: 1.15
+          go-version: ${{matrix.go-version}}
+
+      - uses: actions/checkout@v2
       # Build code
       - name: Build
         run:  |
-          go env
           pwd
           ls -la
           cat -e -t -v Makefile
