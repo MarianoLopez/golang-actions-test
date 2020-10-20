@@ -1,8 +1,11 @@
 name: golang-action-test
 on:
   push:
-    - master
-    - 'feature/**'
+    branches:
+      - master
+  pull_request:
+    branches:
+      - develop
 jobs:
   golang-test-action:
     strategy:
