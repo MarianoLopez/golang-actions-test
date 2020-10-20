@@ -2,7 +2,7 @@ name: golang-action-test
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     branches:
       - develop
