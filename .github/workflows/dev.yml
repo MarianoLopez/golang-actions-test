@@ -47,7 +47,6 @@ jobs:
       # Workaround for sharing data between jobs
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v2
-        working-directory: ./src/github.com/${{ github.repository }}
         with:
           name: my-artifact
           path: bin/main
