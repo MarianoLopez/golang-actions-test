@@ -49,7 +49,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: my-artifact
-          path: bin/main
+          path: ./src/github.com/${{ github.repository }}/bin/main
           retention-days: 1
   cd:
     name: Continious Deployment
