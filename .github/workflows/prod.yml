@@ -1,16 +1,9 @@
-name: DEV-CI/CD
+name: PROD-CI/CD
 
 on:
-  pull_request:
+  push:
     branches:
-      - develop
-    types: [opened, synchronize, reopened]
-  workflow_dispatch:
-    inputs:
-      name:
-        description: 'Person to greet'
-        required: true
-        default: 'Mona'
+      - main
 
 jobs:
   ci:
@@ -65,4 +58,4 @@ jobs:
       - name: Deploy artifact
         run: |
           ls -la
-          echo "Deploying to DEV"
+          echo "Deploying to Prod"
