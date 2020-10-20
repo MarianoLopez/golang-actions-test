@@ -1,5 +1,8 @@
 name: golang-action-test
-on: push
+on:
+  push:
+    - master
+    - 'feature/**'
 jobs:
   golang-test-action:
     strategy:
