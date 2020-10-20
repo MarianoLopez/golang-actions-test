@@ -1,8 +1,5 @@
 name: golang-action-test
 on:
-  push:
-    branches:
-      - main
   pull_request:
     branches:
       - develop
@@ -20,7 +17,7 @@ jobs:
       matrix:
         go-version: [1.15.x]
         platform: [ubuntu-latest]
-    name: Build
+    name: Continious Integration
     runs-on: ${{matrix.platform}}
     env:
       GOPATH: ${{ github.workspace }}
@@ -47,3 +44,13 @@ jobs:
         run: make run
         env:
           GREETING: ${{ github.event.inputs.name }}
+  cd:
+    name: Continious Deployment
+    runs-on: ubuntu-latest
+    needs: ci
+    steps:
+      - name: Deploy code
+        working-directory: ./src/github.com/${{ github.repository }}
+        run: |
+          ls -la
+          echo "Deploying to DEV"
